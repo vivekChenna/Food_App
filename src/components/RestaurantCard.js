@@ -11,7 +11,7 @@ const RestaurantCard = ({ restaurant }) => {
       </div>
 
       <div className="restaurant-heading">
-        <div className="restaurant-name">{restaurant?.data?.name}</div>
+        <div className="restaurant-name">{restaurant.data.name}</div>
       </div>
 
       <div className="cuisines">

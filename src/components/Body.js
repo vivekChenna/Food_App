@@ -17,7 +17,9 @@ const Body = () => {
     const response = await data.json();
     console.log(response);
 
-    setRestaurant(response.data.cards[2].data.data.cards);
+    setRestaurant(response.data.cards[0].data.data.cards);
+
+    console.log(restaurant);
   }
 
   if (!restaurant) {
@@ -27,8 +29,8 @@ const Body = () => {
   return (
     <>
       <div className="restaurant-list">
-        {restaurant.map((restaurant) => {
-          return <RestaurantCard restaurant={restaurant} />;
+        {restaurant.map((restaurant, index) => {
+          return <RestaurantCard restaurant={restaurant} key={index} />;
         })}
       </div>
     </>
