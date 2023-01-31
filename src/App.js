@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Navbar from "./components/Navbar";
+import Body from "./components/Body";
 
 const App = () => {
   return (
-    <div>
-      <h1>Hye! i am the App..</h1>
-    </div>
+    <>
+      <Navbar />
+      <Body />
+    </>
   );
 };
 
