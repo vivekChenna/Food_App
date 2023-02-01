@@ -1,36 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RestaurantCard from "./RestaurantCard.js";
-// import Shimmer from "./Shimmer.js";
+import { useContext } from "react";
+import { userContext } from "./UserContext.js";
+import Shimmer from "./Shimmer.js";
 
 const Body = () => {
-  const [restaurant, setRestaurant] = useState([]);
+  const { filterRestaurant } = useContext(userContext);
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
-
-  async function getRestaurants() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const response = await data.json();
-    console.log(response);
-
-    setRestaurant(response.data.cards[0].data.data.cards);
-
-    console.log(restaurant);
-  }
-
-  if (!restaurant) {
-    return null;
-  }
-
-  return (
+  // console.log(restaurant);
+  return filterRestaurant.length == 0 ? (
+    <Shimmer />
+  ) : (
     <>
       <div className="restaurant-list">
-        {restaurant.map((restaurant, index) => {
-          return <RestaurantCard restaurant={restaurant} key={index} />;
+        {filterRestaurant.map((restaurantItem, index) => {
+          return (
+            <RestaurantCard restaurantDetails={restaurantItem} key={index} />
+          );
         })}
       </div>
     </>
