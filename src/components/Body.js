@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard.js";
 import { useContext } from "react";
 import { userContext } from "./UserContext.js";
 import Shimmer from "./Shimmer.js";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const { filterRestaurant } = useContext(userContext);
@@ -15,7 +16,12 @@ const Body = () => {
       <div className="restaurant-list">
         {filterRestaurant.map((restaurantItem, index) => {
           return (
-            <RestaurantCard restaurantDetails={restaurantItem} key={index} />
+            <Link
+              to={"/restaurant/" + restaurantItem.data.id}
+              key={restaurantItem.data.id}
+            >
+              <RestaurantCard restaurantDetails={restaurantItem} />
+            </Link>
           );
         })}
       </div>

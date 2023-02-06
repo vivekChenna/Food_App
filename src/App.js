@@ -6,7 +6,10 @@ import { userContext } from "./components/UserContext";
 import About from "./components/About";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
+import RestaurantMenu from "./components/RestaurantMenu";
+import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Profile from "./components/Profile";
 
 const App = () => {
   const [restaurant, setRestaurant] = useState([]);
@@ -14,6 +17,7 @@ const App = () => {
 
   useEffect(() => {
     getRestaurants();
+    // console.log("useEffect");
   }, []);
 
   async function getRestaurants() {
@@ -22,12 +26,18 @@ const App = () => {
     );
 
     const response = await data.json();
+
+    // console.log(response);
     const allRestaurantList = response?.data?.cards?.find(
       (item) => item.cardType == "seeAllRestaurants"
     );
     setRestaurant(allRestaurantList?.data?.data?.cards);
     setFilterRestaurant(allRestaurantList?.data?.data?.cards);
+
+    // console.log(allRestaurantList?.data?.data?.cards);
   }
+
+  // console.log("render");
 
   return (
     <userContext.Provider
@@ -57,10 +67,20 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",
         element: <Shimmer />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantMenu />,
       },
     ],
   },
