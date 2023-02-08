@@ -66,6 +66,19 @@
   color: rgb(254, 173, 23);
 }
 
+.toggle-btn {
+  /* border: 2px solid red; */
+  display: flex;
+  gap: 3px;
+  /* color: black; */
+  font-weight: 600;
+}
+
+.sign-in > a {
+  color: black;
+  font-size: larger;
+}
+
 .input-box > input {
   border: none;
   outline: none;
@@ -232,5 +245,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 }

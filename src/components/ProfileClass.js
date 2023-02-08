@@ -4,7 +4,7 @@ class Profile extends React.Component {
     super(props);
 
     //   creating a state variable
-    console.log("child constructor");
+    // console.log("child constructor");
     this.state = {
       userInfo: {
         name: "bablu",
@@ -22,19 +22,19 @@ class Profile extends React.Component {
       userInfo: response,
     });
 
-    console.log("child component did mount");
+    // console.log("child component did mount");
   }
 
   componentDidUpdate() {
-    console.log("component did update");
+    // console.log("component did update");
   }
 
   componentWillUnmount() {
-    console.log("component will Unmount");
+    // console.log("component wil l Unmount");
   }
 
   render() {
-    console.log("child render");
+    // console.log("child render");
     return (
       <>
         <p>{this.state.userInfo.login}</p>

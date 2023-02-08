@@ -6,18 +6,13 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { userContext } from "./UserContext";
 import { Link } from "react-router-dom";
+import { filterRestaurantData } from "../utils/helper";
+import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const { restaurant, setFilterRestaurant } = useContext(userContext);
   const [searchText, setSearchText] = useState("");
-
-  function filterRestaurantData(searchText, restaurantList) {
-    const response = restaurantList.filter((restaurant) => {
-      return restaurant.data.name
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
-    });
-    setFilterRestaurant(response);
-  }
 
   return (
     <div className="header">
@@ -33,7 +28,8 @@ const Navbar = () => {
       <div className="search-bar">
         <SearchIcon
           onClick={() => {
-            filterRestaurantData(searchText, restaurant);
+            const data = filterRestaurantData(searchText, restaurant);
+            setFilterRestaurant(data);
           }}
         />
         <div className="input-box">
@@ -69,7 +65,10 @@ const Navbar = () => {
       </div>
 
       <div className="toggle-btn">
-        <button className="small-btn">Logout</button>
+        <LoginRoundedIcon />
+        <div className="sign-in">
+          <Link to="/signin">Sign In</Link>
+        </div>
       </div>
     </div>
   );

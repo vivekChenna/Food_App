@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
 import { userContext } from "./components/UserContext";
 import About from "./components/About";
 import Error from "./components/Error";
-import Shimmer from "./components/Shimmer";
 import RestaurantMenu from "./components/RestaurantMenu";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Profile from "./components/Profile";
+import Login from "./components/Login";
+import Shimmer from "./components/Shimmer";
+// import Contact from "./components/Contact";
+
+const Contact = lazy(() => import("./components/Contact"));
 
 const App = () => {
   const [restaurant, setRestaurant] = useState([]);
@@ -65,6 +69,10 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
+        path: "/signin",
+        element: <Login />,
+      },
+      {
         path: "/about",
         element: <About />,
         children: [
@@ -76,7 +84,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Shimmer />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:id",

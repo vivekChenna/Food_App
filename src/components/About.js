@@ -17,15 +17,16 @@ import React from "react";
 class About extends React.Component {
   constructor(props) {
     super(props);
-    console.log("parent constructor");
+    // console.log("parent constructor");
   }
 
   componentDidMount() {
-    console.log("parent componentDidMount");
+    // console.log("parent componentDidMount");
   }
 
   render() {
-    console.log("parent render");
+    // console.log("parent render");
+    console.log("in the about us component");
     return (
       <div>
         <h1>this is the about us class based Component</h1>
