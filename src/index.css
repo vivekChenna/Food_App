@@ -61,6 +61,7 @@
 .search-bar {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .search-bar:hover {
   color: rgb(254, 173, 23);
@@ -204,6 +205,28 @@
   flex-direction: column;
 }
 
+.section-block {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid rgb(201, 200, 200);
+  text-overflow: ellipsis;
+  box-shadow: 1px 3px rgb(215, 213, 213);
+}
+
+.section-block-btn {
+  color: white;
+  background-color: rgb(202, 115, 115);
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 3.8rem;
+  height: 1.8rem;
+  border: none;
+}
+
 @media screen and (max-width: 640px) {
   * {
     margin: 0;
@@ -231,6 +254,7 @@
 
   .search-bar {
     display: flex;
+    cursor: pointer;
   }
   .nav-bar > ul {
     display: flex;
